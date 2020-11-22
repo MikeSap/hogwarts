@@ -18,14 +18,6 @@ export default class PigCard extends Component {
             })
     }
 
-    // hidePig = (e) => {
-    //     e.target.parentElement.classList = "hidden"
-    //     // let children = e.target.parentElement.childNodes
-    //     // children.forEach(child => child.className += 'hidden')
-    //     // e.target.previousElementSibling.className += "hidden"
-    // }
-
-
     render() {
         return (
             <div className="ui seven wide column pigTile" onClick={this.cardFlip}>
