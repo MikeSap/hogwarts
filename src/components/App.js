@@ -31,16 +31,15 @@ class App extends Component {
   }
 
   findHogs = () => {
-    let updatedHogs = [...this.state.hogs].filter(hogObj => !hogObj.hidden)
+    let updatedHogs = [...this.state.hogs].filter(hog => !hog.hidden)
 
     if (this.state.showGreased) {
-      updatedHogs = this.state.hogs.filter(hogObj => hogObj.greased)
+      updatedHogs = updatedHogs.filter(hog => hog.greased)
     }
-
     if (this.state.sortBy === 'weight'){
-      updatedHogs.sort(function (hogA, hogB) {
+      updatedHogs.sort((hogA, hogB) => {
         return hogA.weight - hogB.weight;
-      });
+      })
     } else if (this.state.sortBy === 'name') {
       updatedHogs.sort( (hogA, hogB) => hogA.name.toUpperCase() < hogB.name.toUpperCase() ? -1: 1 )
       }
@@ -50,24 +49,22 @@ class App extends Component {
     toggleGreased = () => {
       this.setState(prevState => { 
         return {
-          showGreased: !prevState.showGreased 
+          showGreased: !prevState.showGreased
         }
       })
     }
 
     hideHog = (name) => {
-      const updatedHogs = this.state.hogs.map(hogObj => {
-        if (hogObj.name === name) {
+      const updatedHogs = this.state.hogs.map(hog => {
+        if (hog.name === name) {
           return {
-            ...hogObj,
+            ...hog,
             hidden: true
           }
         } else {
-          return hogObj
+          return hog
         }
-      })
-  
-  
+      })  
       this.setState({
         hogs: updatedHogs
       })
